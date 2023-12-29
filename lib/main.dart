@@ -81,9 +81,7 @@ class Button extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10,),
-          Center(
-          child: OutlinedButton(onPressed: (){},
-          child: const Text('Outline Button'),),)
+
         ],
       ),
     );

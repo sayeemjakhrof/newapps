@@ -1,118 +1,100 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newapps/ui/ui.dart';
 
 void main(){
-  runApp( Myapps());
+  runApp(MyApps());
 }
-class Myapps extends StatelessWidget {
-  Myapps({super.key});
 
+class MyApps extends StatelessWidget {
+  MyApps({super.key});
   @override
-  Widget build(BuildContext context) {
-    return  MaterialApp(
+  Widget build(BuildContext context){
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'class defination',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
-            color: Colors.amberAccent.shade700),
-            primarySwatch: Colors.orange,
-            canvasColor: Colors.brown),
-      title: 'Login Page',
-      home: Login_page(),
+        primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          titleLarge: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 30),
+          titleSmall: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+      ),
+      home: TextThemeData(),
     );
   }
 }
-class Login_page extends StatelessWidget{
-  var email = TextEditingController();
-  var pass = TextEditingController();
-    Login_page({super.key});
-    @override
-    Widget build(BuildContext context){
-      return Scaffold(
-        appBar: AppBar(
-          title: Center(
-              child: Text(
-                'Login Page',
-                style: TextStyle(
-                    color: Colors.black,
-                fontSize: 24,fontWeight: FontWeight.bold
-                ),),
-        ),
+
+class TextThemeData extends StatelessWidget {
+  TextThemeData({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        title: Text('TextThemeData', style: Theme.of(context).textTheme.titleLarge),
       ),
-        body: Center(
-          child: Container(width: 300,
-          child: Column(
+          body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                //height: ,
-                child: Text('Login', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 40),),
-              ),
-              TextField(
-                controller: email,
-                decoration: InputDecoration(
-                  hintText: 'Enter your Email',
-                  prefixIcon: Icon(Icons.mail, color: Colors.orangeAccent, size: 20,),
-                  //prefixText:'Please enter our Email',
-                    helperText: 'Please Enter our Email',
-                  helperStyle: TextStyle(color: Colors.orange.shade400),
-                  focusedBorder: OutlineInputBorder(
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(11),
-                    borderSide: BorderSide(color: Colors.orangeAccent, width: 2),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(11),
-                    borderSide: BorderSide(color: Colors.brown, width: 2),
-                  ),
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(11),
-                    borderSide: BorderSide(color: Colors.amberAccent, width: 2)
-                  )
+                  height: 100,
+                    width: 200,
+                    child: Center(
+                        child: Text('Hello Flutter', style: TxtSize11(fontWeight: FontWeight.bold, textColor: Colors.grey),),
+                    ),
                 ),
-
               ),
               SizedBox(height: 20,),
-              TextField(
-                obscureText: true,
-                obscuringCharacter: "*",
-                controller: pass,
-                readOnly: false,
-                decoration: InputDecoration(
-                  hintText: 'Enter your password',
-                    prefixIcon: Icon(Icons.password, color: Colors.orangeAccent, size: 20,),
-                    helperText: 'Please Enter our password',
-                    helperStyle: TextStyle(color: Colors.orange.shade400),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(color: Colors.orangeAccent, width: 2),
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(11),
+                  ),
+                  height: 100,
+                    width: 200,
+                    child: Center(
+                        child: Text('Hello Flutter',style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.blue, fontSize: 30),),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(11),
-                      borderSide: BorderSide(color: Colors.brown, width: 2),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(11),
-                        borderSide: BorderSide(color: Colors.deepPurple, width: 2)
-                    )
                 ),
               ),
-              ElevatedButton.icon(
-
-                icon: Text('Login', style: TextStyle(color: Colors.brown, fontSize: 30, fontWeight: FontWeight.bold),),
-                label: Icon(Icons.settings, color: Colors.white,),
-                style: OutlinedButton.styleFrom(
-                  //foregroundColor: Colors.amberAccent,
-                  backgroundColor: Colors.blueGrey,
+              SizedBox(height: 20,),
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(11),
+                  ),
+                  height: 100,
+                    width: 200,
+                    child: Center(
+                        child: Text('Hello Flutter', style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.amber, fontSize: 30),),
+                    ),
                 ),
-                onPressed: (){
-               String _Email = email.text;
-               String _pass = pass.text;
-               print('Email Address $_Email & password is $_pass');
-              },
-              // Text('login', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 24)
-              // )
-              )
+              ),
+              SizedBox(height: 20,),
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(11),
+                  ),
+                  height: 100,
+                    width: 200,
+                    child: Center(
+                        child: Text('Hello Flutter', style: TxtSize11(fontSize: 30, fontWeight: FontWeight.bold, textColor: Colors.orangeAccent),)
+                    ),
+                ),
+              ),
             ],
-          ),),
-        ),
-      );
+          ),
+    );
   }
-  }
+}

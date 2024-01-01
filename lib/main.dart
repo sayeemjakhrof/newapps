@@ -47,7 +47,6 @@ class Login_page extends StatelessWidget{
                 child: Text('Login', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 40),),
               ),
               TextField(
-                c
                 controller: email,
                 decoration: InputDecoration(
                   hintText: 'Enter your Email',
@@ -95,11 +94,22 @@ class Login_page extends StatelessWidget{
                     )
                 ),
               ),
-              IconButton(onPressed: (){
+              ElevatedButton.icon(
+
+                icon: Text('Login', style: TextStyle(color: Colors.brown, fontSize: 30, fontWeight: FontWeight.bold),),
+                label: Icon(Icons.settings, color: Colors.white,),
+                style: OutlinedButton.styleFrom(
+                  //foregroundColor: Colors.amberAccent,
+                  backgroundColor: Colors.blueGrey,
+                ),
+                onPressed: (){
                String _Email = email.text;
                String _pass = pass.text;
                print('Email Address $_Email & password is $_pass');
-              }, icon: Text('login'), color: Colors.orange,focusColor: Colors.orange,)
+              },
+              // Text('login', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 24)
+              // )
+              )
             ],
           ),),
         ),

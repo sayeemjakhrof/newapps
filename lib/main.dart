@@ -1,100 +1,177 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newapps/ui/ui.dart';
 
 void main(){
-  runApp(MyApps());
+  runApp(const Myapps());
 }
 
-class MyApps extends StatelessWidget {
-  MyApps({super.key});
+class Myapps extends StatelessWidget{
+ const Myapps({super.key});
   @override
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'class defination',
+      title: 'ListTilel',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(color: Colors.orange.shade400),
         textTheme: TextTheme(
-          titleLarge: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 30),
-          titleSmall: TextStyle(color: Colors.purple, fontWeight: FontWeight.bold, fontSize: 20),
+          titleLarge: TextStyle(color: Colors.purple.shade700, fontWeight: FontWeight.bold, fontSize: 20,),
+          titleSmall: TextStyle(color: Colors.orange, fontWeight: FontWeight.w500, fontSize: 18),
         ),
       ),
-      home: TextThemeData(),
+      home: NewApps(),
     );
   }
 }
 
-class TextThemeData extends StatelessWidget {
-  TextThemeData({super.key});
-
+class NewApps extends StatelessWidget{
+  NewApps({super.key});
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
-        title: Text('TextThemeData', style: Theme.of(context).textTheme.titleLarge),
+        leading: Icon(Icons.add_alarm, size: 40, color: Colors.black,),
+        title: Center(child: Text('apps',style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold,),)),
       ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(11),
-                  ),
-                  height: 100,
-                    width: 200,
-                    child: Center(
-                        child: Text('Hello Flutter', style: TxtSize11(fontWeight: FontWeight.bold, textColor: Colors.grey),),
-                    ),
-                ),
-              ),
-              SizedBox(height: 20,),
-              Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(11),
-                  ),
-                  height: 100,
-                    width: 200,
-                    child: Center(
-                        child: Text('Hello Flutter',style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.blue, fontSize: 30),),
-                    ),
-                ),
-              ),
-              SizedBox(height: 20,),
-              Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(11),
-                  ),
-                  height: 100,
-                    width: 200,
-                    child: Center(
-                        child: Text('Hello Flutter', style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.amber, fontSize: 30),),
-                    ),
-                ),
-              ),
-              SizedBox(height: 20,),
-              Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(11),
-                  ),
-                  height: 100,
-                    width: 200,
-                    child: Center(
-                        child: Text('Hello Flutter', style: TxtSize11(fontSize: 30, fontWeight: FontWeight.bold, textColor: Colors.orangeAccent),)
-                    ),
-                ),
-              ),
-            ],
-          ),
+      body: Scrollbar(
+        radius: Radius.circular(10),
+        child: ListView(
+          children: [
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+              thickness: .5,
+              endIndent: 20,
+              indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is a web developer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+              thickness: .5,
+              endIndent: 20,
+              indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is web Designer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+              thickness: .5,
+              endIndent: 20,
+              indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text(' Graphics Desinger', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+              thickness: .5,
+              endIndent: 20,
+              indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+            thickness: .5,
+            endIndent: 20,
+            indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+              thickness: .5,
+              endIndent: 20,
+              indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+              thickness: .5,
+              endIndent: 20,
+              indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+            Divider(height: 10, color: Colors.black,
+              thickness: .5,
+              endIndent: 20,
+              indent: 20,),
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
+              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
+              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
+              onTap: (){ print('login');},
+              minVerticalPadding: 20,
+              //focusColor: Colors.black,
+              titleAlignment: ListTileTitleAlignment.center,
+              horizontalTitleGap: 30,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

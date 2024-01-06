@@ -1,173 +1,190 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp(const Myapps());
+void main() {
+  runApp(MyApps());
 }
 
-class Myapps extends StatelessWidget{
- const Myapps({super.key});
+class MyApps extends StatelessWidget {
+  MyApps({super.key});
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ListTilel',
+      title: 'Navigator ',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        appBarTheme: AppBarTheme(color: Colors.orange.shade400),
-        textTheme: TextTheme(
-          titleLarge: TextStyle(color: Colors.purple.shade700, fontWeight: FontWeight.bold, fontSize: 20,),
-          titleSmall: TextStyle(color: Colors.orange, fontWeight: FontWeight.w500, fontSize: 18),
-        ),
-      ),
-      home: NewApps(),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue))),
+          primaryColor: Colors.cyanAccent,
+          appBarTheme: AppBarTheme(color: Colors.blue)),
+      home: NavigatorScreen(),
     );
   }
 }
 
-class NewApps extends StatelessWidget{
-  NewApps({super.key});
+class NavigatorScreen extends StatelessWidget {
+  NavigatorScreen({super.key});
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.add_alarm, size: 40, color: Colors.black,),
-        title: Center(child: Text('apps',style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold,),)),
+        //leading: Drawer(child: IconButton(onPressed: (){}, icon: Icon(Icons.android_outlined),),),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.add,
+                color: Colors.white,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.account_box,
+                color: Colors.white,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.add_alarm,
+                color: Colors.white,
+              )),
+        ],
+        title: Center(
+          child: Text(
+            'HomeScreen',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ),
-      body: Scrollbar(
-        radius: Radius.circular(10),
-        child: ListView(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return SettingScreen();
+                  }));
+                },
+                child: Text(
+                  'Open Setting Button',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                )),
+            Divider(
+              color: Colors.grey.shade200,
+              height: 20,
+              indent: 120,
+              endIndent: 120,
             ),
-            Divider(height: 10, color: Colors.black,
-              thickness: .5,
-              endIndent: 20,
-              indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is a web developer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>OrderScreen()));
+                },
+                child: Text(
+                  'Open Order Button',
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SettingScreen extends StatelessWidget {
+  SettingScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Setting Screen',
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> OrderScreen()));
+              },
+              child: Text(
+                'Open Order Button',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
-            Divider(height: 10, color: Colors.black,
-              thickness: .5,
-              endIndent: 20,
-              indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is web Designer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
+            Divider(
+              color: Colors.grey.shade200,
+              height: 20,
+              indent: 120,
+              endIndent: 120,
             ),
-            Divider(height: 10, color: Colors.black,
-              thickness: .5,
-              endIndent: 20,
-              indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text(' Graphics Desinger', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Back to Home',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
-            Divider(height: 10, color: Colors.black,
-              thickness: .5,
-              endIndent: 20,
-              indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class OrderScreen extends StatelessWidget {
+  OrderScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Order Screen',
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>NavigatorScreen()),
+                        (route) => false);
+              },
+              child: Text(
+                'Open Setting Button',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
-            Divider(height: 10, color: Colors.black,
-            thickness: .5,
-            endIndent: 20,
-            indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
+            Divider(
+              color: Colors.grey.shade200,
+              height: 20,
+              indent: 120,
+              endIndent: 120,
             ),
-            Divider(height: 10, color: Colors.black,
-              thickness: .5,
-              endIndent: 20,
-              indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
-            ),
-            Divider(height: 10, color: Colors.black,
-              thickness: .5,
-              endIndent: 20,
-              indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
-            ),
-            Divider(height: 10, color: Colors.black,
-              thickness: .5,
-              endIndent: 20,
-              indent: 20,),
-            ListTile(
-              leading: Icon(Icons.account_box),
-              title: Text('SayeemJakhrof', style: Theme.of(context).textTheme.titleLarge,),
-              subtitle: Text('He is a app developer', style: Theme.of(context).textTheme.titleSmall,),
-              trailing: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.account_box,), label: Text('login')),
-              onTap: (){ print('login');},
-              minVerticalPadding: 20,
-              //focusColor: Colors.black,
-              titleAlignment: ListTileTitleAlignment.center,
-              horizontalTitleGap: 30,
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Back to Home',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
             ),
           ],
         ),

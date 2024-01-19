@@ -1,71 +1,113 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApps());
+  runApp(
+      MaterialApp(
+          theme: ThemeData(
+            appBarTheme: AppBarTheme(color: Colors.blue),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.cyan),
+              ),
+            ),
+          ),
+          debugShowCheckedModeBanner: false,
+      home: CounterApps()));
 }
 
-class MyApps extends StatelessWidget {
-  MyApps({super.key});
+class CounterApps extends StatefulWidget {
+  CounterApps({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData(
-          colorScheme: ColorScheme.dark(
-            background: Colors.black12,
-          ),
-          appBarTheme: AppBarTheme(
-              titleTextStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
-              centerTitle: true,
-              color: Colors.lime[800],
-              shadowColor: Colors.black12)),
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(
-            color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
-        color: Colors.orange,
-        centerTitle: true,
-        shadowColor: Colors.black,
-      )),
-      home: HomeScreen(),
-    );
-  }
+  State<CounterApps> createState() => _CounterAppsState();
 }
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-  List ArrayList = [
-    {'name': 'Dominic', 'age': '18', 'Nationality': 'Austelia'},
-    {'name': 'jao', 'age': '20', 'Nationality': 'newziland'},
-    {'name': 'carry', 'age': '23', 'Nationality': 'Italy'},
-    {'name': 'john', 'age': '38', 'Nationality': 'America'},
-    {'name': 'John show', 'age': '34', 'Nationality': 'America'},
-    {'name': 'Sayeem Jakhrof', 'age': '35', 'Nationality': 'Bangladesh'}
-  ];
-
+class _CounterAppsState extends State<CounterApps> {
+  int counter = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
+          title: Text(
+            'CounterApps',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ),
-        body: Container(
-          child: ListView(
-              children: ArrayList.map((value) => ListTile(
-                    titleTextStyle: TextStyle(fontSize: 24),
-                    iconColor: Colors.grey,
-                    leading: Icon(Icons.circle),
-                    title: Text(value['name'].toString()),
-                    subtitle: Text(value['Nationality'].toString()),
-                    trailing:
-                        CircleAvatar(
-                            child: Text(value['age'].toString())),
-                  )).toList()),
-        ));
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(counter.toString(),
+                  style: TextStyle(
+                      color: Colors.orange,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50)),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          elevatatButtonScreen(personName: "Jakhrof Sayeem"),
+                    ),
+                  );
+                },
+                child: Text(
+                  'Next Page',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blue,
+          onPressed: () {
+            if (counter < 50) {
+              counter++;
+              setState(() {});
+            };
+          },
+          child: Icon(
+            Icons.add,
+            size: 30,
+          ),
+        ),
+      );
+  }
+}
+
+class elevatatButtonScreen extends StatefulWidget {
+  final String personName;
+  elevatatButtonScreen({super.key, required this.personName});
+
+  @override
+  State<elevatatButtonScreen> createState() => _elevatatButtonScreenState();
+}
+
+class _elevatatButtonScreenState extends State<elevatatButtonScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Person Name',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              Text(
+                widget.personName,
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+              Text('hello ', style: TextStyle(fontSize: 22),),
+              Icon(Icons.add_alarm)
+            ],
+          ),
+        ),
+    );
   }
 }
